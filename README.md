@@ -17,9 +17,9 @@ jobs:
       id-token: write
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - name: Clean npm package
-        uses: ai/copy-changelog-to-release@1680ee151d1b693e807c8e9bd95d26c2d57018ac #v1.0.0
+        uses: ai/copy-changelog-to-release@907fd240473b0935f716efdedf9fa660ba874737 # 0.1.0
 ```
 
 ## Thanks
