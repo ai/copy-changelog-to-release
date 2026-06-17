@@ -1,0 +1,7 @@
+name: Copy ChangeLog to Release
+description: Create GitHub Releases based on latest record in `CHANGELOG.md` file.
+author: Andrey Sitnik
+
+runs:
+  using: node24
+  main: action.js
