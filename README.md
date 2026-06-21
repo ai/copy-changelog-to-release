@@ -18,7 +18,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
       - name: Clean npm package
-        uses: ai/copy-changelog-to-release@907fd240473b0935f716efdedf9fa660ba874737 # 0.1.0
+        uses: ai/copy-changelog-to-release@a6dc825c34575add2da2060796794f7b84894628 # v0.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -32,7 +32,7 @@ Set to `false` to avoid moving the `latest` tag (useful when releasing a patch
 for an older major version).
 
 ```yml
-- uses: ai/copy-changelog-to-release@907fd240473b0935f716efdedf9fa660ba874737 # 0.1.0
+- uses: ai/copy-changelog-to-release@…
   with:
     latest: false
   env:
