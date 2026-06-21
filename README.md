@@ -23,6 +23,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+## Options
+
+### `latest`
+
+Whether to mark the created/updated release as the latest. Defaults to `true`.
+Set to `false` to avoid moving the `latest` tag (useful when releasing a patch
+for an older major version).
+
+```yml
+- uses: ai/copy-changelog-to-release@907fd240473b0935f716efdedf9fa660ba874737 # 0.1.0
+  with:
+    latest: false
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
 ## Thanks
 
 Based on [`softprops/action-gh-release`](https://github.com/softprops/action-gh-release).

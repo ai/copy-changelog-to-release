@@ -54,7 +54,7 @@ async function getReleaseByTag(opts) {
 }
 
 async function createRelease(opts) {
-  let { owner, repo, tag, name, releaseBody } = opts
+  let { owner, repo, tag, name, releaseBody, latest } = opts
   let { status, body } = await apiRequest({
     ...opts,
     method: 'POST',
@@ -64,7 +64,8 @@ async function createRelease(opts) {
       name,
       body: releaseBody,
       draft: false,
-      prerelease: false
+      prerelease: false,
+      make_latest: latest ? 'true' : 'false'
     }
   })
   if (status >= 200 && status < 300) return body
@@ -72,7 +73,7 @@ async function createRelease(opts) {
 }
 
 async function updateRelease(opts) {
-  let { owner, repo, id, name, releaseBody } = opts
+  let { owner, repo, id, name, releaseBody, latest } = opts
   let { status, body } = await apiRequest({
     ...opts,
     method: 'PATCH',
@@ -81,7 +82,8 @@ async function updateRelease(opts) {
       name,
       body: releaseBody,
       draft: false,
-      prerelease: false
+      prerelease: false,
+      make_latest: latest ? 'true' : 'false'
     }
   })
   if (status >= 200 && status < 300) return body
@@ -108,7 +110,8 @@ async function main() {
   if (!owner || !repo) throw new Error('GITHUB_REPOSITORY env var is required')
 
   let apiUrl = process.env.GITHUB_API_URL || 'https://api.github.com'
-  let ctx = { owner, repo, tag, token, apiUrl, name: tag, releaseBody }
+  let latest = (process.env.INPUT_LATEST || 'true').toLowerCase() !== 'false'
+  let ctx = { owner, repo, tag, token, apiUrl, name: tag, releaseBody, latest }
 
   let existing = await getReleaseByTag(ctx)
   let release = existing
